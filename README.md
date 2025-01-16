@@ -1,2 +1,2 @@
 # ICAG-React
-React+Vite frontend for qpplications generator
+React+Vite frontend for app generator
