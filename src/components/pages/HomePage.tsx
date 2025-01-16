@@ -22,11 +22,11 @@ const HomePage = () => {
           <div className="bg-white shadow sm:rounded-lg">
             <div className="px-4 py-5 sm:p-6">
               <h1 className="text-3xl font-bold text-gray-900 mb-8">
-              IT CORP Applications Generator (ICAG)  
+              IT CORP' Applications Generator (ICAG)  
               </h1>
               <div className="mb-6">
                 <h2 className="text-xl font-semibold text-gray-700 mb-2">
-                  Informations du Projet
+                  Projet de développement d'une application
                 </h2>
                 <p className="text-gray-500">
                   Commencez à donner les informations de base de votre projet.

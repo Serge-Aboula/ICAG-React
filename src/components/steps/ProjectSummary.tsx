@@ -4,8 +4,9 @@ import { Button } from '@/components/ui/button';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Progress } from '@/components/ui/progress';
-import { Download, Archive, Cloud, FileText, AlertCircle, Github, Terminal, ArrowLeft, ArrowRight } from 'lucide-react';
+import { Download, Archive, Cloud, FileText, AlertCircle, Github, Terminal, ArrowLeft, Check } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import React from 'react';
 
 const ProjectSummary = () => {
   const navigate = useNavigate();
@@ -25,10 +26,19 @@ const ProjectSummary = () => {
     setIsExporting(false);
   };
 
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const handleStart = async () => {
+    setIsSubmitting(true);
+    // Simulate a small delay for better UX
+    await new Promise(resolve => setTimeout(resolve, 800));
+    setIsSubmitting(false);
+    navigate('/');
+  };
+
   return (
     <Card className="w-full max-w-4xl mx-auto">
       <CardHeader>
-        <CardTitle className="text-2xl">Résumé du projet et déploiement</CardTitle>
+        <CardTitle className="text-2xl">Résumé du projet et exportation</CardTitle>
       </CardHeader>
       <CardContent className="space-y-6">
         {/* Résumé du projet */}
@@ -91,7 +101,7 @@ const ProjectSummary = () => {
           </Card>
           <Card>
             <CardContent className="pt-6 text-center">
-              <h4 className="text-sm text-gray-500 mb-1">Composants UI</h4>
+              <h4 className="text-sm text-gray-500 mb-1">Vue</h4>
               <p className="text-2xl font-bold">8</p>
             </CardContent>
           </Card>
@@ -99,7 +109,7 @@ const ProjectSummary = () => {
 
         {/* Options de déploiement */}
         <div className="space-y-4">
-          <h3 className="text-lg font-medium">Options de déploiement</h3>
+          <h3 className="text-lg font-medium">Options d'exportation</h3>
           <Tabs defaultValue="local">
             <TabsList className="grid grid-cols-3 w-[400px]">
               <TabsTrigger value="local" className="flex items-center gap-2">
@@ -184,14 +194,27 @@ const ProjectSummary = () => {
         </div>
         {/* Actions finales */}
         <div className="flex justify-between mt-6">
-          <Button onClick={() => navigate('/data-model')} variant="outline" className="flex items-center gap-2">
+          <Button onClick={() => navigate('/code-generation')} variant="outline" className="flex items-center gap-2">
             <ArrowLeft className="h-4 w-4" />
             Retour à la génération de code
           </Button>
-          <Button onClick={() => navigate('/project-summary')} variant="default" className="flex items-center gap-2">
-          Finaliser le projet
-            <ArrowRight className="h-4 w-4" />
-          </Button>
+          <div className="flex justify-end">
+            <Button
+              onClick={handleStart}
+              disabled={isSubmitting}
+              className="inline-flex items-center gap-2"
+              variant="default"
+            >
+              {isSubmitting ? (
+                <>
+                  <span>Processing...</span>
+                  <Check className="animate-spin h-4 w-4" />
+                </>
+              ) : (
+                'Finaliser le projet'
+              )}
+            </Button>
+          </div>          
         </div>        
       </CardContent>
     </Card>

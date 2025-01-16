@@ -3,8 +3,9 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { ArrowRight, ArrowLeft, Plus, Trash2, MessageSquare, Loader2 } from 'lucide-react';
+import { ArrowLeft, Plus, Trash2, MessageSquare, Loader2, Check } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import React from 'react';
 
 const FunctionalRequirementsStep = () => {
   const navigate = useNavigate();
@@ -57,6 +58,16 @@ const FunctionalRequirementsStep = () => {
           "4. Export des données en PDF/Excel"
       } : r
     ));
+  };
+
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
+  
+  const handleContinue = async () => {
+    setIsSubmitting(true);
+    // Simulate a small delay for better UX
+    await new Promise(resolve => setTimeout(resolve, 800));
+    setIsSubmitting(false);
+    navigate('/data-base');
   };
 
   return (
@@ -144,11 +155,24 @@ const FunctionalRequirementsStep = () => {
           <Button onClick={() => navigate('/project-setup')} variant="outline" className="flex items-center gap-2">
             <ArrowLeft className="h-4 w-4" />
             Retour à la configuration du projet
-          </Button>
-          <Button onClick={() => navigate('/data-model')} variant="default" className="flex items-center gap-2">
-            Continuer
-            <ArrowRight className="h-4 w-4" />
-          </Button>
+          </Button>          
+          <div className="flex justify-end">
+            <Button
+              onClick={handleContinue}
+              disabled={isSubmitting}
+              className="inline-flex items-center gap-2"
+              variant="default"
+            >
+              {isSubmitting ? (
+                <>
+                  <span>Processing...</span>
+                  <Check className="animate-spin h-4 w-4" />
+                </>
+              ) : (
+                'Continuer'
+              )}
+            </Button>
+          </div>
         </div>
       </CardContent>
     </Card>

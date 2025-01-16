@@ -5,8 +5,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 //import { Alert, AlertDescription } from '@/components/ui/alert';
 //import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Switch } from '@/components/ui/switch';
-import { ArrowLeft, ArrowRight, Download, Code, RefreshCcw, Database, FileJson, FileCode } from 'lucide-react';
+import { ArrowLeft, Download, Code, RefreshCcw, Database, FileJson, FileCode, Check } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import React from 'react';
 
 const CodeGenerationStep = () => {
   const navigate = useNavigate();
@@ -73,6 +74,16 @@ const CodeGenerationStep = () => {
   const getActiveFile = () => {
     const files = getFileList();
     return files.find(f => f.name === selectedFile) || files[0] || null;
+  };
+
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
+  
+  const handleContinue = async () => {
+    setIsSubmitting(true);
+    // Simulate a small delay for better UX
+    await new Promise(resolve => setTimeout(resolve, 800));
+    setIsSubmitting(false);
+    navigate('/project-summary');
   };
 
   return (
@@ -171,14 +182,27 @@ const CodeGenerationStep = () => {
         )}
         {/* Navigation */}
         <div className="flex justify-between mt-6">
-          <Button onClick={() => navigate('/data-model')} variant="outline" className="flex items-center gap-2">
+          <Button onClick={() => navigate('/data-base')} variant="outline" className="flex items-center gap-2">
             <ArrowLeft className="h-4 w-4" />
-            Retour à la modélisation de données
-          </Button>
-          <Button onClick={() => navigate('/project-summary')} variant="default" className="flex items-center gap-2">
-            Continuer
-            <ArrowRight className="h-4 w-4" />
-          </Button>
+            Retour au schéma relationnel
+          </Button>          
+          <div className="flex justify-end">
+            <Button
+              onClick={handleContinue}
+              disabled={isSubmitting}
+              className="inline-flex items-center gap-2"
+              variant="default"
+            >
+              {isSubmitting ? (
+                <>
+                  <span>Processing...</span>
+                  <Check className="animate-spin h-4 w-4" />
+                </>
+              ) : (
+                'Continuer'
+              )}
+            </Button>
+          </div>
         </div>
       </CardContent>
     </Card>

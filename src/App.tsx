@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './components/pages/HomePage';
 import ProjectSetup from './components/steps/ProjectSetup';
 //import RequirementsCapture from './components/steps/RequirementsCapture';
-import DataModel from './components/steps/DataModel';
+import DataModel from './components/steps/DbSchema';
 //import EntityDesigner from './components/steps/EntityDesigner';
 import CodeGeneration from './components/steps/CodeGeneration';
 import ProjectSummary from './components/steps/ProjectSummary';
@@ -40,7 +40,7 @@ export default function App() {
               }
             />
             <Route
-              path="/data-model"
+              path="/data-base"
               element={
                 <>
                   <StepProgress />

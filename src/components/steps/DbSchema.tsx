@@ -3,11 +3,12 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { ArrowRight, ArrowLeft, Plus, Trash2, Database, Link } from 'lucide-react';
+import { ArrowLeft, Plus, Trash2, Database, Link, Check } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useNavigate } from 'react-router-dom';
+import React from 'react';
 
-const DataModelStep = () => {
+const DbSchema = () => {
   const navigate = useNavigate();
   const [entities, setEntities] = useState([
     {
@@ -79,6 +80,15 @@ const DataModelStep = () => {
     setRelations(relations.map(relation =>
       relation.id === relationId ? { ...relation, [field]: value } : relation
     ));
+  };
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
+    
+  const handleContinue = async () => {
+    setIsSubmitting(true);
+    // Simulate a small delay for better UX
+    await new Promise(resolve => setTimeout(resolve, 800));
+    setIsSubmitting(false);
+    navigate('/code-generation');
   };
 
   return (
@@ -262,15 +272,28 @@ const DataModelStep = () => {
           <Button onClick={() => navigate('/functional-requirements')} variant="outline" className="flex items-center gap-2">
             <ArrowLeft className="h-4 w-4" />
             Retour aux besoins fonctionnels
-          </Button>
-          <Button onClick={() => navigate('/code-generation')} variant="default" className="flex items-center gap-2">
-            Continuer
-            <ArrowRight className="h-4 w-4" />
-          </Button>
-        </div>
+          </Button>          
+          <div className="flex justify-end">
+            <Button
+              onClick={handleContinue}
+              disabled={isSubmitting}
+              className="inline-flex items-center gap-2"
+              variant="default"
+            >
+              {isSubmitting ? (
+                <>
+                  <span>Processing...</span>
+                  <Check className="animate-spin h-4 w-4" />
+                </>
+              ) : (
+                'Continuer'
+              )}
+            </Button>
+          </div>
+        </div>        
       </CardContent>
     </Card>
   );
 };
 
-export default DataModelStep;
+export default DbSchema;

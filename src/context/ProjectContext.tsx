@@ -9,7 +9,7 @@ interface ProjectData {
     database: string;
   };
   requirements: string[];
-  entities: any[];
+  entities: { id: number; name: string; }[];
 }
 
 interface ProjectContextType {
