@@ -4,7 +4,7 @@ import { CheckCircle2, Circle } from 'lucide-react';
 const steps = [
   { path: '/project-setup', label: 'Configuration' },
   { path: '/functional-requirements', label: 'Exigences' },
-  { path: '/data-base', label: 'Entités' },
+  { path: '/data-base', label: 'Schéma BD' },
   { path: '/code-generation', label: 'Génération' },
   { path: '/project-summary', label: 'Résumé' },
 ];

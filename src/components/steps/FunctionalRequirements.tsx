@@ -85,7 +85,7 @@ const FunctionalRequirementsStep = () => {
               onClick={() => setActiveRequirement(req.id)}
               className="flex items-center gap-2"
             >
-              Besoin {req.id}
+              Besoins {req.id}
               {requirements.length > 1 && (
                 <Trash2 
                   className="h-4 w-4 text-red-500 hover:text-red-700"
@@ -115,7 +115,7 @@ const FunctionalRequirementsStep = () => {
           >
             <div>
               <label className="block text-sm font-medium mb-1">
-                Description du besoin fonctionnel
+                Description des besoins fonctionnels
               </label>
               <Textarea
                 value={req.description}

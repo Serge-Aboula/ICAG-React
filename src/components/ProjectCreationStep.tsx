@@ -69,7 +69,7 @@ const ProjectCreationStep = () => {
         {/* Informations de base */}
         <div className="space-y-4">
           <div>
-            <label className="block text-sm font-medium mb-1">Nom du projet</label>
+            <label className="block text-sm font-medium mb-1">Nom du projet / application</label>
             <Input
               value={formData.projectName}
               onChange={(e) => handleInputChange('projectName', e.target.value)}
@@ -102,10 +102,11 @@ const ProjectCreationStep = () => {
               onValueChange={(value) => handleInputChange('applicationType', value)}
             >
               <SelectTrigger className={errors.applicationType ? 'border-red-500' : ''}>
-                <SelectValue placeholder="Sélectionnez le type d'application" />
+                <SelectValue placeholder="Application Web" />
               </SelectTrigger>
               <SelectContent>
-              <SelectItem value="gestion">Application Web de Gestion</SelectItem>
+                <SelectItem value="gestion">Application Web</SelectItem>
+                <SelectItem value="mobile">Application Mobile</SelectItem>
                 <SelectItem value="ecommerce">Site E-commerce</SelectItem>
                 <SelectItem value="vitrine">Site Vitrine</SelectItem>
                 <SelectItem value="blog">Blog</SelectItem>
@@ -130,13 +131,14 @@ const ProjectCreationStep = () => {
               onValueChange={(value) => handleInputChange('frontend', value)}
             >
               <SelectTrigger className={errors.frontend ? 'border-red-500' : ''}>
-                <SelectValue placeholder="Sélectionnez la technologie frontend" />
+                <SelectValue placeholder="Bootstrap" />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="php-bootstrap">Bootstrap</SelectItem>
                 <SelectItem value="react">React</SelectItem>
-                <SelectItem value="flutter">Flutter (Dart)</SelectItem>
-                <SelectItem value="android">Android (Java)</SelectItem>
+                <SelectItem value="flutter">Dart (Flutter)</SelectItem>
+                <SelectItem value="php-bootstrap">CSS3</SelectItem>
+                <SelectItem value="android">Java (Android)</SelectItem>
               </SelectContent>
             </Select>
             {errors.frontend && (
@@ -151,7 +153,7 @@ const ProjectCreationStep = () => {
               onValueChange={(value) => handleInputChange('backend', value)}
             >
               <SelectTrigger className={errors.backend ? 'border-red-500' : ''}>
-                <SelectValue placeholder="Sélectionnez la technologie backend" />
+                <SelectValue placeholder="PHP" />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="php">PHP</SelectItem>
@@ -176,8 +178,8 @@ const ProjectCreationStep = () => {
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="mysql">MySQL</SelectItem>
-                <SelectItem value="mysql">PostgreSQL</SelectItem>
-                <SelectItem value="mysql">ORACLE</SelectItem>
+                {/* <SelectItem value="mysql">PostgreSQL</SelectItem>
+                <SelectItem value="mysql">ORACLE</SelectItem> */}
                 <SelectItem value="mongodb">MongoDB</SelectItem>
               </SelectContent>
             </Select>

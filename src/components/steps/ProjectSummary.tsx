@@ -38,7 +38,7 @@ const ProjectSummary = () => {
   return (
     <Card className="w-full max-w-4xl mx-auto">
       <CardHeader>
-        <CardTitle className="text-2xl">Résumé du projet et exportation</CardTitle>
+        <CardTitle className="text-2xl">Résumé / Exportation  du Projet </CardTitle>
       </CardHeader>
       <CardContent className="space-y-6">
         {/* Résumé du projet */}
@@ -47,7 +47,7 @@ const ProjectSummary = () => {
           <div className="grid grid-cols-2 gap-4">
             <Card>
               <CardContent className="pt-6">
-                <h4 className="font-medium mb-2">Informations générales</h4>
+                <h4 className="font-medium mb-2">Informations générales :</h4>
                 <dl className="space-y-2">
                   <div>
                     <dt className="text-sm text-gray-500">Nom du projet</dt>
@@ -55,7 +55,7 @@ const ProjectSummary = () => {
                   </div>
                   <div>
                     <dt className="text-sm text-gray-500">Type d'application</dt>
-                    <dd className="font-medium">Application de gestion</dd>
+                    <dd className="font-medium">Application Web</dd>
                   </div>
                 </dl>
               </CardContent>
@@ -63,15 +63,15 @@ const ProjectSummary = () => {
             
             <Card>
               <CardContent className="pt-6">
-                <h4 className="font-medium mb-2">Technologies</h4>
+                <h4 className="font-medium mb-2">Technologies :</h4>
                 <dl className="space-y-2">
                   <div>
                     <dt className="text-sm text-gray-500">Frontend</dt>
-                    <dd className="font-medium">React avec Bootstrap</dd>
+                    <dd className="font-medium">Bootstrap</dd>
                   </div>
                   <div>
                     <dt className="text-sm text-gray-500">Backend</dt>
-                    <dd className="font-medium">PHP Laravel</dd>
+                    <dd className="font-medium">PHP</dd>
                   </div>
                 </dl>
               </CardContent>
@@ -83,26 +83,26 @@ const ProjectSummary = () => {
         <div className="grid grid-cols-4 gap-4">
           <Card>
             <CardContent className="pt-6 text-center">
-              <h4 className="text-sm text-gray-500 mb-1">Entités</h4>
-              <p className="text-2xl font-bold">4</p>
+              <h4 className="text-sm text-gray-500 mb-1">Tables</h4>
+              <p className="text-2xl font-bold">2</p>
             </CardContent>
           </Card>
           <Card>
             <CardContent className="pt-6 text-center">
               <h4 className="text-sm text-gray-500 mb-1">Relations</h4>
-              <p className="text-2xl font-bold">3</p>
+              <p className="text-2xl font-bold">1</p>
             </CardContent>
           </Card>
           <Card>
             <CardContent className="pt-6 text-center">
               <h4 className="text-sm text-gray-500 mb-1">API Endpoints</h4>
-              <p className="text-2xl font-bold">12</p>
+              <p className="text-2xl font-bold">4</p>
             </CardContent>
           </Card>
           <Card>
             <CardContent className="pt-6 text-center">
               <h4 className="text-sm text-gray-500 mb-1">Vue</h4>
-              <p className="text-2xl font-bold">8</p>
+              <p className="text-2xl font-bold">3</p>
             </CardContent>
           </Card>
         </div>

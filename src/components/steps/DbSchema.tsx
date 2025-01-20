@@ -101,7 +101,7 @@ const DbSchema = () => {
           <TabsList>
             <TabsTrigger value="entities" className="flex items-center gap-2">
               <Database className="h-4 w-4" />
-              Entités
+              Tables
             </TabsTrigger>
             <TabsTrigger value="relations" className="flex items-center gap-2">
               <Link className="h-4 w-4" />
@@ -116,7 +116,7 @@ const DbSchema = () => {
                   <div className="flex items-end gap-4">
                     <div className="flex-1">
                       <label className="block text-sm font-medium mb-1">
-                        Nom de l'entité
+                        Nom de la table
                       </label>
                       <Input
                         value={entity.name}
